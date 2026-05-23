@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Jordan Family Bible — 1862</title>
+<style>
+:root{
+  --ink:#2C1810;
+  --ink-soft:#5C4030;
+  --ink-faint:#8B7355;
+  --parchment:#F4E8D0;
+  --parchment-pale:#FAF6EC;
+  --parchment-deep:#E8D9B8;
+  --parchment-shadow:#D4C39A;
+  --burgundy:#6B1F1F;
+  --burgundy-dark:#4A1414;
+  --burgundy-faint:#8B3535;
+  --gold:#A07020;
+  --gold-pale:#C9A961;
+  --rule:#8B7355;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --display:'Iowan Old Style','Palatino Linotype','Hoefler Text',Garamond,Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{background:var(--parchment-pale);}
+body{
+  font-family:var(--serif);
+  color:var(--ink);
+  line-height:1.65;
+  min-height:100vh;
+  font-size:16px;
+  background:
+    radial-gradient(ellipse at top, rgba(160,112,32,0.06), transparent 70%),
+    radial-gradient(ellipse at bottom, rgba(107,31,31,0.05), transparent 60%),
+    var(--parchment-pale);
+}
+header{
+  background:linear-gradient(180deg,var(--burgundy) 0%,var(--burgundy-dark) 100%);
+  color:var(--parchment);
+  padding:28px 24px 22px;
+  border-bottom:3px double var(--gold);
+  position:relative;
+  text-align:center;
+}
+header::before,header::after{
+  content:"❦";
+  color:var(--gold-pale);
+  font-size:1.4em;
+  margin:0 14px;
+  vertical-align:middle;
+}
+header h1{
+  font-family:var(--display);
+  font-size:2.1em;
+  font-weight:normal;
+  letter-spacing:2px;
+  font-variant:small-caps;
+  display:inline;
+}
+header .subtitle{
+  font-style:italic;
+  color:var(--gold-pale);
+  font-size:0.95em;
+  margin-top:8px;
+  letter-spacing:0.5px;
+}
+header .dedication{
+  font-size:0.82em;
+  color:var(--parchment-deep);
+  margin-top:4px;
+  letter-spacing:1px;
+  font-variant:small-caps;
+}
+nav{
+  background:var(--parchment-deep);
+  border-bottom:1px solid var(--rule);
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:20;
+  box-shadow:0 2px 6px rgba(44,24,16,0.12);
+}
+nav button{
+  background:transparent;
+  border:none;
+  padding:11px 16px;
+  font-family:var(--serif);
+  font-size:0.92em;
+  color:var(--ink);
+  cursor:pointer;
+  border-right:1px solid var(--parchment-shadow);
+  transition:all 0.15s;
+  letter-spacing:0.3px;
+}
+nav button:hover{background:var(--parchment);color:var(--burgundy);}
+nav button.active{
+  background:var(--burgundy);
+  color:var(--parchment);
+  font-weight:600;
+}
+main{padding:28px 24px 60px;max-width:1280px;margin:0 auto;}
+.tab{display:none;animation:fadeIn 0.25s ease;}
+.tab.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:none;}}
+h2{
+  font-family:var(--display);
+  color:var(--burgundy);
+  font-weight:normal;
+  font-size:1.7em;
+  border-bottom:1px solid var(--rule);
+  padding-bottom:10px;
+  margin-bottom:18px;
+  letter-spacing:0.5px;
+  font-variant:small-caps;
+}
+h3{
+  font-family:var(--display);
+  color:var(--burgundy-dark);
+  font-weight:normal;
+  margin:22px 0 10px;
+  font-size:1.25em;
+  letter-spacing:0.3px;
+}
+h3::before{content:"§ ";color:var(--gold);}
+p.lede{
+  font-style:italic;
+  color:var(--ink-soft);
+  margin-bottom:14px;
+  max-width:70ch;
+}
+.card{
+  background:var(--parchment);
+  border:1px solid var(--parchment-shadow);
+  border-radius:2px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 1px 3px rgba(44,24,16,0.08);
+  position:relative;
+}
+.card.bordered::before{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border:1px solid var(--gold-pale);
+  pointer-events:none;
+  border-radius:1px;
+}
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:14px;
+}
+.field{display:flex;flex-direction:column;}
+.field label{
+  font-size:0.78em;
+  color:var(--burgundy-dark);
+  margin-bottom:5px;
+  letter-spacing:1px;
+  font-variant:small-caps;
+  font-weight:600;
+}
+.field input,.field select,.field textarea{
+  font-family:var(--serif);
+  font-size:0.98em;
+  padding:9px 10px;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  background:var(--parchment-pale);
+  color:var(--ink);
+  transition:border-color 0.15s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;
+  border-color:var(--burgundy);
+  box-shadow:0 0 0 2px rgba(107,31,31,0.12);
+}
+.field textarea{resize:vertical;min-height:64px;line-height:1.5;}
+.field.full{grid-column:1/-1;}
+.field .hint{font-size:0.78em;color:var(--ink-faint);font-style:italic;margin-top:3px;}
+button.act{
+  background:var(--burgundy);
+  color:var(--parchment);
+  border:none;
+  padding:10px 22px;
+  font-family:var(--serif);
+  font-size:0.95em;
+  cursor:pointer;
+  border-radius:2px;
+  margin-right:8px;
+  margin-top:8px;
+  letter-spacing:0.5px;
+  font-variant:small-caps;
+  transition:background 0.15s;
+}
+button.act:hover{background:var(--burgundy-dark);}
+button.act.gold{background:var(--gold);}
+button.act.gold:hover{background:#8B5A1A;}
+button.act.ghost{
+  background:transparent;
+  color:var(--burgundy);
+  border:1px solid var(--burgundy);
+}
+button.act.ghost:hover{background:var(--burgundy);color:var(--parchment);}
+button.mini{
+  background:transparent;
+  border:1px solid var(--rule);
+  color:var(--ink-soft);
+  padding:4px 10px;
+  font-family:var(--serif);
+  font-size:0.82em;
+  cursor:pointer;
+  border-radius:2px;
+  margin-right:4px;
+}
+button.mini:hover{background:var(--parchment-deep);}
+button.mini.danger{color:var(--burgundy);border-color:var(--burgundy-faint);}
+button.mini.danger:hover{background:var(--burgundy);color:var(--parchment);}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:14px;
+  background:var(--parchment);
+  border:1px solid var(--parchment-shadow);
+}
+thead th{
+  background:var(--burgundy);
+  color:var(--parchment);
+  padding:10px 12px;
+  text-align:left;
+  font-size:0.82em;
+  font-weight:600;
+  letter-spacing:1px;
+  font-variant:small-caps;
+}
+tbody td{
+  padding:10px 12px;
+  border-top:1px solid var(--parchment-shadow);
+  font-size:0.92em;
+  vertical-align:top;
+}
+tbody tr:hover td{background:var(--parchment-pale);}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:12px;
+  margin-bottom:24px;
+}
+.stat{
+  background:var(--parchment);
+  border:1px solid var(--parchment-shadow);
+  border-left:4px solid var(--burgundy);
+  padding:14px 16px;
+  border-radius:2px;
+}
+.stat .l{
+  font-size:0.74em;
+  color:var(--ink-faint);
+  letter-spacing:1px;
+  font-variant:small-caps;
+}
+.stat .v{
+  font-family:var(--display);
+  font-size:2em;
+  color:var(--burgundy);
+  font-weight:normal;
+  line-height:1.1;
+  margin-top:4px;
+}
+.banner{
+  padding:10px 14px;
+  margin:8px 0 16px;
+  border-radius:2px;
+  font-size:0.9em;
+  font-style:italic;
+}
+.banner.ok{background:rgba(160,112,32,0.1);color:var(--gold);border-left:3px solid var(--gold);}
+.banner.warn{background:rgba(180,90,20,0.12);color:#8B4513;border-left:3px solid #8B4513;}
+.banner.err{background:rgba(107,31,31,0.1);color:var(--burgundy);border-left:3px solid var(--burgundy);}
+.empty{
+  text-align:center;
+  padding:32px;
+  color:var(--ink-faint);
+  font-style:italic;
+  background:var(--parchment);
+  border:1px dashed var(--parchment-shadow);
+  border-radius:2px;
+}
+.dual{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:720px){
+  .dual{grid-template-columns:1fr;}
+  nav button{font-size:0.82em;padding:9px 10px;}
+  header h1{font-size:1.5em;letter-spacing:1px;}
+  main{padding:20px 14px 40px;}
+  table{font-size:0.85em;}
+  thead{display:none;}
+  tbody tr{display:block;border:1px solid var(--parchment-shadow);margin-bottom:8px;padding:8px;background:var(--parchment);}
+  tbody td{display:block;border:none;padding:4px 0;}
+  tbody td::before{content:attr(data-l) ": ";font-variant:small-caps;color:var(--burgundy);letter-spacing:1px;font-size:0.78em;}
+}
+.pill{
+  display:inline-block;
+  padding:2px 9px;
+  border-radius:10px;
+  font-size:0.78em;
+  letter-spacing:0.5px;
+  margin:1px 2px;
+}
+.pill.scribe{background:var(--burgundy);color:var(--parchment);}
+.pill.scrip{background:var(--gold-pale);color:white;}
+.pill.type{background:var(--ink-soft);color:var(--parchment-pale);font-variant:small-caps;}
+.checklist{margin:10px 0;}
+.checklist label{
+  display:block;
+  padding:8px 10px;
+  background:var(--parchment);
+  border:1px solid var(--parchment-shadow);
+  border-radius:2px;
+  margin-bottom:6px;
+  cursor:pointer;
+  transition:background 0.15s;
+}
+.checklist label:hover{background:var(--parchment-deep);}
+.checklist input{margin-right:10px;transform:scale(1.15);accent-color:var(--burgundy);}
+.checklist label.done{background:rgba(160,112,32,0.08);color:var(--ink-faint);text-decoration:line-through;}
+.verbatim{
+  font-family:'Courier New',monospace;
+  background:var(--parchment-pale);
+  padding:8px 10px;
+  border-left:3px solid var(--gold);
+  white-space:pre-wrap;
+  font-size:0.9em;
+}
+.session-active{
+  background:rgba(160,112,32,0.15);
+  border:1px solid var(--gold);
+  padding:14px;
+  border-radius:2px;
+  margin-bottom:14px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.session-active .timer{
+  font-family:var(--display);
+  font-size:1.4em;
+  color:var(--burgundy);
+}
+footer{
+  text-align:center;
+  padding:24px 16px;
+  color:var(--ink-faint);
+  font-style:italic;
+  font-size:0.85em;
+  border-top:1px solid var(--rule);
+  margin-top:40px;
+}
+footer::before{content:"❦";color:var(--gold);margin-right:10px;}
+footer::after{content:"❦";color:var(--gold);margin-left:10px;}
+.flex-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.muted{color:var(--ink-faint);font-size:0.88em;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>The Jordan Family Bible</h1>
+  <div class="subtitle">Anno Domini 1862 — A page-by-page record</div>
+  <div class="dedication">For Sylas · And for those whose hands held this before ours</div>
+</header>
+
+<nav>
+  <button class="tab-btn active" data-tab="dash">Dashboard</button>
+  <button class="tab-btn" data-tab="bibles">Bibles</button>
+  <button class="tab-btn" data-tab="pages">Pages</button>
+  <button class="tab-btn" data-tab="family">Family Register</button>
+  <button class="tab-btn" data-tab="journal">Journal</button>
+  <button class="tab-btn" data-tab="people">People</button>
+  <button class="tab-btn" data-tab="compare">Comparison</button>
+  <button class="tab-btn" data-tab="inserts">Inserts</button>
+  <button class="tab-btn" data-tab="custody">Custodianship</button>
+  <button class="tab-btn" data-tab="scribes">Scribes</button>
+  <button class="tab-btn" data-tab="sessions">Sessions</button>
+  <button class="tab-btn" data-tab="data">Data &amp; Backup</button>
+</nav>
+
+<main>
+
+<!-- DASHBOARD -->
+<section class="tab active" id="tab-dash">
+  <div id="storage-status"></div>
+  <h2>The Work at Hand</h2>
+  <p class="lede">A record kept slowly is a record kept well. Fifteen pages tonight is enough.</p>
+
+  <div class="stats" id="stats"></div>
+
+  <div id="session-bar"></div>
+
+  <div class="card bordered">
+    <h3 style="margin-top:0;">Pre-Flight Checklist</h3>
+    <p class="muted">Complete these before you touch page one. Stored locally — your marks persist.</p>
+    <div class="checklist" id="checklist"></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Recent Entries</h3>
+    <div id="recent"></div>
+  </div>
+</section>
+
+<!-- BIBLES -->
+<section class="tab" id="tab-bibles">
+  <h2>The Bibles Themselves</h2>
+  <p class="lede">Record the primary 1862 volume first, then the modern comparison Bible. Bibliographic capture done once, well, is a gift to every cousin who reads this later.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Add or Edit a Bible</h3>
+    <form id="bible-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="bible-id">
+      <div class="field"><label>Role</label>
+        <select id="bible-role"><option value="primary">Primary (the 1862)</option><option value="comparison">Comparison (modern)</option></select>
+      </div>
+      <div class="field"><label>Title as Printed</label><input id="bible-title" placeholder="The Holy Bible…"></div>
+      <div class="field"><label>Translation / Edition</label><input id="bible-translation" placeholder="KJV, ABS, etc."></div>
+      <div class="field"><label>Publisher</label><input id="bible-pub"></div>
+      <div class="field"><label>Printer</label><input id="bible-printer"></div>
+      <div class="field"><label>City</label><input id="bible-city"></div>
+      <div class="field"><label>Year</label><input id="bible-year" placeholder="1862"></div>
+      <div class="field"><label>Binding</label><input id="bible-binding" placeholder="full leather, gilt edges"></div>
+      <div class="field"><label>Dimensions</label><input id="bible-dims" placeholder='11" × 9" × 4"'></div>
+      <div class="field"><label>Weight</label><input id="bible-weight"></div>
+      <div class="field full"><label>Condition Summary</label><textarea id="bible-cond" placeholder="Spine condition, hinges, foxing, red-rot, loose pages, plates intact…"></textarea></div>
+      <div class="field"><label>Acquired From</label><input id="bible-acq"></div>
+      <div class="field"><label>Acquired Date</label><input type="date" id="bible-acq-date"></div>
+      <div class="field"><label>Current Custodian</label><input id="bible-custodian" value="Wayne (Clifton) Jordan"></div>
+      <div class="field full"><label>Notes &amp; Provenance</label><textarea id="bible-notes"></textarea></div>
+    </form>
+    <button class="act" onclick="saveBible()">Save Bible Record</button>
+    <button class="act ghost" onclick="clearForm('bible-form');document.getElementById('bible-id').value='';">Clear</button>
+  </div>
+
+  <h3>Recorded Bibles</h3>
+  <div id="bibles-list"></div>
+</section>
+
+<!-- PAGES -->
+<section class="tab" id="tab-pages">
+  <h2>Pages</h2>
+  <p class="lede">One row per physical face — recto (right) and verso (left) are separate. Photo filenames only; keep images in a folder beside this file.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Log a Page</h3>
+    <form id="page-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="page-id">
+      <div class="field"><label>Bible</label><select id="page-bible"></select></div>
+      <div class="field"><label>Page Number</label><input id="page-num" placeholder="e.g. 247"></div>
+      <div class="field"><label>Side</label><select id="page-side"><option>recto</option><option>verso</option></select></div>
+      <div class="field"><label>Scripture Range</label><input id="page-scrip" placeholder="Genesis 12:1–14:24"></div>
+      <div class="field"><label>Photo Filename</label><input id="page-photo" placeholder="JordanBible1862_p247_recto.jpg"></div>
+      <div class="field"><label>Has Family Content?</label><select id="page-family"><option value="no">No</option><option value="yes">Yes</option></select></div>
+      <div class="field"><label>Has Marginalia?</label><select id="page-marg"><option value="no">No</option><option value="yes">Yes</option></select></div>
+      <div class="field"><label>Has Insert/Ephemera?</label><select id="page-insert"><option value="no">No</option><option value="yes">Yes</option></select></div>
+      <div class="field full"><label>Condition Notes</label><textarea id="page-cond" placeholder="Foxing in upper margin; small tear at fore-edge; ink fresh."></textarea></div>
+      <div class="field full"><label>Notes</label><textarea id="page-notes"></textarea></div>
+    </form>
+    <button class="act" onclick="savePage()">Save Page</button>
+    <button class="act ghost" onclick="clearForm('page-form');document.getElementById('page-id').value='';">Clear</button>
+  </div>
+
+  <h3>Logged Pages</h3>
+  <div id="pages-list"></div>
+</section>
+
+<!-- FAMILY REGISTER -->
+<section class="tab" id="tab-family">
+  <h2>Family Register</h2>
+  <p class="lede">The heart of the project. Verbatim transcription first — exactly as written, abbreviations and all. Clean reading second, in a separate field. Never edit the verbatim once recorded.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Add Family Register Entry</h3>
+    <form id="fam-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="fam-id">
+      <div class="field"><label>Event Type</label>
+        <select id="fam-type">
+          <option>birth</option><option>marriage</option><option>death</option>
+          <option>baptism</option><option>military</option><option>other</option>
+        </select>
+      </div>
+      <div class="field"><label>Page Reference</label><select id="fam-page"></select></div>
+      <div class="field"><label>Scribe</label><select id="fam-scribe"></select></div>
+      <div class="field"><label>Person (link)</label><select id="fam-person"><option value="">— unlinked —</option></select></div>
+      <div class="field full"><label>Verbatim Transcription</label><textarea id="fam-verbatim" placeholder='Jno. Jordan b. 14th day of June in the yeare of our Lord 1847' style="font-family:Courier New,monospace;"></textarea></div>
+      <div class="field full"><label>Clean Reading (Modern)</label><textarea id="fam-clean" placeholder="John Jordan, born 14 June 1847"></textarea></div>
+      <div class="field"><label>Name as Written</label><input id="fam-name-w"></div>
+      <div class="field"><label>Name Normalized</label><input id="fam-name-n"></div>
+      <div class="field"><label>Date as Written</label><input id="fam-date-w"></div>
+      <div class="field"><label>Date (ISO)</label><input type="date" id="fam-date-i"></div>
+      <div class="field"><label>Location</label><input id="fam-loc"></div>
+      <div class="field"><label>Photo Filename</label><input id="fam-photo"></div>
+      <div class="field full"><label>Notes &amp; Cross-References</label><textarea id="fam-notes"></textarea></div>
+    </form>
+    <button class="act" onclick="saveFam()">Save Entry</button>
+    <button class="act ghost" onclick="clearForm('fam-form');document.getElementById('fam-id').value='';">Clear</button>
+  </div>
+
+  <h3>Family Register Entries</h3>
+  <div id="fam-list"></div>
+</section>
+
+<!-- JOURNAL -->
+<section class="tab" id="tab-journal">
+  <h2>Journal Entries</h2>
+  <p class="lede">Narrative writing in the Bible — prayers, dated remembrances, marginal commentary. Same verbatim-then-clean discipline.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Add Journal Entry</h3>
+    <form id="jrn-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="jrn-id">
+      <div class="field"><label>Page Reference</label><select id="jrn-page"></select></div>
+      <div class="field"><label>Scribe</label><select id="jrn-scribe"></select></div>
+      <div class="field"><label>Date as Written</label><input id="jrn-date-w"></div>
+      <div class="field"><label>Date (ISO)</label><input type="date" id="jrn-date-i"></div>
+      <div class="field full"><label>Verbatim Transcription</label><textarea id="jrn-verbatim" style="font-family:Courier New,monospace;"></textarea></div>
+      <div class="field full"><label>Clean Reading</label><textarea id="jrn-clean"></textarea></div>
+      <div class="field full"><label>Interpretive Notes</label><textarea id="jrn-interp"></textarea></div>
+      <div class="field full"><label>Historical Context</label><textarea id="jrn-hist" placeholder="What was happening in the family or the world on this date?"></textarea></div>
+      <div class="field"><label>Photo Filename</label><input id="jrn-photo"></div>
+    </form>
+    <button class="act" onclick="saveJrn()">Save Entry</button>
+    <button class="act ghost" onclick="clearForm('jrn-form');document.getElementById('jrn-id').value='';">Clear</button>
+  </div>
+
+  <h3>Journal Entries</h3>
+  <div id="jrn-list"></div>
+</section>
+
+<!-- PEOPLE -->
+<section class="tab" id="tab-people">
+  <h2>People</h2>
+  <p class="lede">One row per ancestor. Build this as you find them in the register — refine over time. This is what eventually becomes your family tree.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Add or Edit Person</h3>
+    <form id="ppl-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="ppl-id">
+      <div class="field"><label>Name (normalized)</label><input id="ppl-name"></div>
+      <div class="field"><label>Name Variants</label><input id="ppl-variants" placeholder="Jno., John, Johnny"></div>
+      <div class="field"><label>Birth Date</label><input id="ppl-birth"></div>
+      <div class="field"><label>Birth Location</label><input id="ppl-birth-loc"></div>
+      <div class="field"><label>Death Date</label><input id="ppl-death"></div>
+      <div class="field"><label>Death Location</label><input id="ppl-death-loc"></div>
+      <div class="field"><label>Father</label><input id="ppl-father"></div>
+      <div class="field"><label>Mother</label><input id="ppl-mother"></div>
+      <div class="field"><label>Spouse(s)</label><input id="ppl-spouse"></div>
+      <div class="field"><label>Children</label><input id="ppl-children"></div>
+      <div class="field"><label>Relationship to me</label><input id="ppl-rel" placeholder="Great-great-grandfather"></div>
+      <div class="field full"><label>Notes &amp; Biography</label><textarea id="ppl-notes"></textarea></div>
+    </form>
+    <button class="act" onclick="savePerson()">Save Person</button>
+    <button class="act ghost" onclick="clearForm('ppl-form');document.getElementById('ppl-id').value='';">Clear</button>
+  </div>
+
+  <h3>People</h3>
+  <div id="ppl-list"></div>
+</section>
+
+<!-- COMPARISON -->
+<section class="tab" id="tab-compare">
+  <h2>Old vs. New Comparison</h2>
+  <p class="lede">One row per scripture passage where the 1862 and the modern Bible read differently — or read identically and you want to note that. Build this selectively, not for every verse.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Add Comparison Entry</h3>
+    <form id="cmp-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="cmp-id">
+      <div class="field"><label>Scripture Reference</label><input id="cmp-ref" placeholder="1 Corinthians 13:13"></div>
+      <div class="field"><label>1862 Page</label><input id="cmp-page-old"></div>
+      <div class="field"><label>Modern Page</label><input id="cmp-page-new"></div>
+      <div class="field full"><label>1862 Text (verbatim)</label><textarea id="cmp-text-old" style="font-family:Courier New,monospace;"></textarea></div>
+      <div class="field full"><label>Modern Text</label><textarea id="cmp-text-new"></textarea></div>
+      <div class="field full"><label>Differences Noted</label><textarea id="cmp-diff" placeholder="charity → love; verse split; footnote added…"></textarea></div>
+      <div class="field full"><label>Translation Notes</label><textarea id="cmp-trans"></textarea></div>
+    </form>
+    <button class="act" onclick="saveCmp()">Save Comparison</button>
+    <button class="act ghost" onclick="clearForm('cmp-form');document.getElementById('cmp-id').value='';">Clear</button>
+  </div>
+
+  <h3>Comparisons</h3>
+  <div id="cmp-list"></div>
+</section>
+
+<!-- INSERTS -->
+<section class="tab" id="tab-inserts">
+  <h2>Inserts &amp; Ephemera</h2>
+  <p class="lede">Pressed flowers, hair locks, funeral cards, newspaper clippings, ribbon bookmarks — photograph in place, photograph in isolation, store separately in acid-free sleeves.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Log an Insert</h3>
+    <form id="ins-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="ins-id">
+      <div class="field"><label>Type</label>
+        <select id="ins-type">
+          <option>pressed flower</option><option>hair lock</option><option>funeral card</option>
+          <option>newspaper clipping</option><option>ribbon bookmark</option>
+          <option>letter</option><option>photograph</option><option>other</option>
+        </select>
+      </div>
+      <div class="field"><label>Found at Page</label><select id="ins-page"></select></div>
+      <div class="field full"><label>Description</label><textarea id="ins-desc"></textarea></div>
+      <div class="field"><label>Photo (in place)</label><input id="ins-photo-place"></div>
+      <div class="field"><label>Photo (isolated)</label><input id="ins-photo-iso"></div>
+      <div class="field"><label>Storage Location</label><input id="ins-store" placeholder="Acid-free sleeve #3"></div>
+      <div class="field full"><label>Notes</label><textarea id="ins-notes"></textarea></div>
+    </form>
+    <button class="act" onclick="saveIns()">Save Insert</button>
+    <button class="act ghost" onclick="clearForm('ins-form');document.getElementById('ins-id').value='';">Clear</button>
+  </div>
+
+  <h3>Inserts Logged</h3>
+  <div id="ins-list"></div>
+</section>
+
+<!-- CUSTODIANSHIP -->
+<section class="tab" id="tab-custody">
+  <h2>Chain of Custody</h2>
+  <p class="lede">Who held this Bible, and when. Add yourself last. This is a living record — future custodians add their rows.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Add Custodian</h3>
+    <form id="cus-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="cus-id">
+      <div class="field"><label>Custodian Name</label><input id="cus-name"></div>
+      <div class="field"><label>From (year or date)</label><input id="cus-from"></div>
+      <div class="field"><label>To (year or date)</label><input id="cus-to"></div>
+      <div class="field full"><label>Notes</label><textarea id="cus-notes"></textarea></div>
+    </form>
+    <button class="act" onclick="saveCus()">Save Custodian</button>
+    <button class="act ghost" onclick="clearForm('cus-form');document.getElementById('cus-id').value='';">Clear</button>
+  </div>
+
+  <h3>Chain</h3>
+  <div id="cus-list"></div>
+</section>
+
+<!-- SCRIBES -->
+<section class="tab" id="tab-scribes">
+  <h2>Scribes</h2>
+  <p class="lede">Distinct handwriting styles. Tag each with a simple letter (A, B, C…). When you find Scribe B writing across multiple decades, you've found a person who held the Bible for a long time.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Add Scribe</h3>
+    <form id="scr-form" class="form-grid" onsubmit="return false;">
+      <input type="hidden" id="scr-id">
+      <div class="field"><label>Label</label><input id="scr-label" placeholder="A"></div>
+      <div class="field"><label>Suspected Identity</label><input id="scr-who"></div>
+      <div class="field"><label>Earliest Entry Date</label><input id="scr-first"></div>
+      <div class="field"><label>Latest Entry Date</label><input id="scr-last"></div>
+      <div class="field full"><label>Handwriting Description</label><textarea id="scr-desc" placeholder="Steel pen, black iron-gall ink turning brown; tight Spencerian script; capital J with long descender…"></textarea></div>
+    </form>
+    <button class="act" onclick="saveScr()">Save Scribe</button>
+    <button class="act ghost" onclick="clearForm('scr-form');document.getElementById('scr-id').value='';">Clear</button>
+  </div>
+
+  <h3>Scribes Identified</h3>
+  <div id="scr-list"></div>
+</section>
+
+<!-- SESSIONS -->
+<section class="tab" id="tab-sessions">
+  <h2>Work Sessions</h2>
+  <p class="lede">Track when you sat with the Bible. Fifteen pages a session, max. The book hates being open for hours.</p>
+
+  <div id="session-controls" class="card">
+    <h3 style="margin-top:0;">Current Session</h3>
+    <div id="session-state"></div>
+  </div>
+
+  <h3>Past Sessions</h3>
+  <div id="ses-list"></div>
+</section>
+
+<!-- DATA -->
+<section class="tab" id="tab-data">
+  <h2>Data &amp; Backup</h2>
+  <p class="lede">This project lives in your browser's local storage. Back it up. Often.</p>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Export</h3>
+    <p>Download the complete project as JSON. Do this at the end of every session.</p>
+    <button class="act" onclick="exportJSON()">Download Full Project (JSON)</button>
+    <button class="act gold" onclick="exportAllCSV()">Download All Tables (CSV bundle)</button>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Import</h3>
+    <p>Restore from a previous JSON export. <strong>This replaces your current data.</strong></p>
+    <input type="file" id="import-file" accept=".json">
+    <button class="act ghost" onclick="importJSON()">Import &amp; Replace</button>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Storage</h3>
+    <div id="storage-detail"></div>
+  </div>
+
+  <div class="card">
+    <h3 style="margin-top:0;">Danger Zone</h3>
+    <p class="muted">Wipe all project data. There is no undo.</p>
+    <button class="act ghost" style="border-color:var(--burgundy);color:var(--burgundy);" onclick="wipeAll()">Erase All Data</button>
+  </div>
+</section>
+
+</main>
+
+<footer>The Jordan Family Bible Project · Built for offline use · Memorial Day, 2026</footer>
+
+<script>
+"use strict";
+
+// =========================================================================
+// STORAGE LAYER — localStorage with try/catch fallback to in-memory
+// =========================================================================
+const KEY = "jordan_bible_1862_v1";
+let memFallback = null;
+let storageMode = "localStorage";
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(raw){ return JSON.parse(raw); }
+  }catch(e){
+    storageMode = "memory";
+    console.warn("localStorage unavailable:",e);
+  }
+  return null;
+}
+function saveState(){
+  state.meta.lastModified = new Date().toISOString();
+  try{
+    localStorage.setItem(KEY, JSON.stringify(state));
+    storageMode = "localStorage";
+  }catch(e){
+    storageMode = "memory";
+    memFallback = JSON.parse(JSON.stringify(state));
+    console.warn("Falling back to memory storage:",e);
+  }
+  renderStorageStatus();
+}
+
+// Initial state shape
+function freshState(){
+  return {
+    meta:{ version:1, created:new Date().toISOString(), lastModified:null },
+    bibles:[], pages:[], family_entries:[], journal_entries:[], people:[],
+    inserts:[], custodianship:[], comparisons:[], sessions:[], scribes:[],
+    checklist:{
+      cond_survey:false, biblio_capture:false, photo_rig:false,
+      naming_convention:false, gloves_cradle:false, backup_plan:false,
+      destination_decision:false, modern_bible_chosen:false
+    },
+    activeSession:null
+  };
+}
+
+let state = loadState() || freshState();
+if(!state.checklist){ state.checklist = freshState().checklist; }
+if(!state.scribes){ state.scribes = []; }
+
+// =========================================================================
+// UTILITIES
+// =========================================================================
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function el(id){ return document.getElementById(id); }
+function esc(s){ if(s==null) return ""; return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function clearForm(formId){
+  const f = el(formId); if(!f) return;
+  f.querySelectorAll("input,textarea,select").forEach(i=>{
+    if(i.type==="hidden") return;
+    if(i.tagName==="SELECT") i.selectedIndex = 0;
+    else i.value="";
+  });
+}
+function readForm(prefix, fields){
+  const obj = {};
+  fields.forEach(f=>{
+    const node = el(prefix + "-" + f);
+    if(node) obj[f] = node.value.trim();
+  });
+  return obj;
+}
+function writeForm(prefix, fields, data){
+  fields.forEach(f=>{
+    const node = el(prefix + "-" + f);
+    if(node && data[f]!=null) node.value = data[f];
+  });
+}
+function findById(arr, id){ return arr.find(x=>x.id===id); }
+
+// =========================================================================
+// TABS
+// =========================================================================
+document.querySelectorAll(".tab-btn").forEach(b=>{
+  b.addEventListener("click",()=>{
+    document.querySelectorAll(".tab-btn").forEach(x=>x.classList.remove("active"));
+    document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    el("tab-" + b.dataset.tab).classList.add("active");
+    renderAll();
+  });
+});
+
+// =========================================================================
+// BIBLES
+// =========================================================================
+const BIBLE_FIELDS = ["role","title","translation","pub","printer","city","year","binding","dims","weight","cond","acq","acq-date","custodian","notes"];
+function saveBible(){
+  const id = el("bible-id").value || uid();
+  const data = { id };
+  BIBLE_FIELDS.forEach(f=>{
+    const n = el("bible-" + f);
+    if(n) data[f.replace("-","_")] = n.value.trim();
+  });
+  const existing = state.bibles.findIndex(b=>b.id===id);
+  if(existing>=0) state.bibles[existing] = data;
+  else state.bibles.push(data);
+  saveState(); clearForm("bible-form"); el("bible-id").value=""; renderBibles(); renderDropdowns();
+}
+function editBible(id){
+  const b = findById(state.bibles,id); if(!b) return;
+  el("bible-id").value = b.id;
+  BIBLE_FIELDS.forEach(f=>{
+    const n = el("bible-" + f);
+    const key = f.replace("-","_");
+    if(n && b[key]!=null) n.value = b[key];
+  });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function deleteBible(id){
+  if(!confirm("Delete this Bible record?")) return;
+  state.bibles = state.bibles.filter(b=>b.id!==id);
+  saveState(); renderBibles(); renderDropdowns();
+}
+function renderBibles(){
+  const host = el("bibles-list");
+  if(!state.bibles.length){ host.innerHTML = '<div class="empty">No Bibles recorded yet. Begin with the 1862 above.</div>'; return; }
+  host.innerHTML = state.bibles.map(b=>`
+    <div class="card">
+      <div class="flex-row" style="justify-content:space-between;">
+        <div>
+          <span class="pill type">${esc(b.role||"")}</span>
+          <strong style="font-size:1.1em;">${esc(b.title||"(untitled)")}</strong>
+          <span class="muted"> · ${esc(b.year||"")}</span>
+        </div>
+        <div>
+          <button class="mini" onclick="editBible('${b.id}')">Edit</button>
+          <button class="mini danger" onclick="deleteBible('${b.id}')">Delete</button>
+        </div>
+      </div>
+      <div class="muted" style="margin-top:6px;">${esc(b.translation||"")} · ${esc(b.pub||"")}${b.city?", "+esc(b.city):""}</div>
+      ${b.cond?`<div style="margin-top:8px;"><strong>Condition:</strong> ${esc(b.cond)}</div>`:""}
+      ${b.notes?`<div style="margin-top:6px;" class="muted">${esc(b.notes)}</div>`:""}
+    </div>`).join("");
+}
+
+// =========================================================================
+// PAGES
+// =========================================================================
+const PAGE_FIELDS = ["bible","num","side","scrip","photo","family","marg","insert","cond","notes"];
+function savePage(){
+  const id = el("page-id").value || uid();
+  const data = { id };
+  PAGE_FIELDS.forEach(f=>{ data[f] = el("page-"+f).value.trim(); });
+  const i = state.pages.findIndex(p=>p.id===id);
+  if(i>=0) state.pages[i] = data; else state.pages.push(data);
+  saveState(); clearForm("page-form"); el("page-id").value=""; renderPages(); renderDropdowns();
+}
+function editPage(id){
+  const p = findById(state.pages,id); if(!p) return;
+  el("page-id").value = p.id;
+  PAGE_FIELDS.forEach(f=>{ const n = el("page-"+f); if(n) n.value = p[f]||""; });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function deletePage(id){
+  if(!confirm("Delete this page record?")) return;
+  state.pages = state.pages.filter(p=>p.id!==id);
+  saveState(); renderPages(); renderDropdowns();
+}
+function renderPages(){
+  const host = el("pages-list");
+  if(!state.pages.length){ host.innerHTML='<div class="empty">No pages logged yet.</div>'; return; }
+  const sorted = [...state.pages].sort((a,b)=>(parseInt(a.num)||0)-(parseInt(b.num)||0));
+  host.innerHTML = `<table>
+    <thead><tr><th>Page</th><th>Side</th><th>Scripture</th><th>Flags</th><th>Photo</th><th></th></tr></thead>
+    <tbody>${sorted.map(p=>`
+      <tr>
+        <td data-l="Page">${esc(p.num)}</td>
+        <td data-l="Side">${esc(p.side)}</td>
+        <td data-l="Scripture"><span class="pill scrip">${esc(p.scrip||"—")}</span></td>
+        <td data-l="Flags">${p.family==="yes"?'<span class="pill type">family</span>':""}${p.marg==="yes"?'<span class="pill type">marginalia</span>':""}${p.insert==="yes"?'<span class="pill type">insert</span>':""}</td>
+        <td data-l="Photo" class="muted">${esc(p.photo||"")}</td>
+        <td><button class="mini" onclick="editPage('${p.id}')">Edit</button><button class="mini danger" onclick="deletePage('${p.id}')">×</button></td>
+      </tr>`).join("")}</tbody></table>`;
+}
+
+// =========================================================================
+// FAMILY REGISTER
+// =========================================================================
+const FAM_FIELDS = ["type","page","scribe","person","verbatim","clean","name-w","name-n","date-w","date-i","loc","photo","notes"];
+function saveFam(){
+  const id = el("fam-id").value || uid();
+  const data = { id, created: el("fam-id").value ? findById(state.family_entries,id).created : new Date().toISOString() };
+  FAM_FIELDS.forEach(f=>{ const k = f.replace("-","_"); data[k] = el("fam-"+f).value.trim(); });
+  const i = state.family_entries.findIndex(x=>x.id===id);
+  if(i>=0) state.family_entries[i] = data; else state.family_entries.push(data);
+  saveState(); clearForm("fam-form"); el("fam-id").value=""; renderFam(); renderRecent();
+}
+function editFam(id){
+  const x = findById(state.family_entries,id); if(!x) return;
+  el("fam-id").value = x.id;
+  FAM_FIELDS.forEach(f=>{ const k = f.replace("-","_"); const n = el("fam-"+f); if(n) n.value = x[k]||""; });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function deleteFam(id){
+  if(!confirm("Delete this family entry?")) return;
+  state.family_entries = state.family_entries.filter(x=>x.id!==id);
+  saveState(); renderFam(); renderRecent();
+}
+function renderFam(){
+  const host = el("fam-list");
+  if(!state.family_entries.length){ host.innerHTML='<div class="empty">No family register entries yet. The gold is on its way.</div>'; return; }
+  host.innerHTML = state.family_entries.map(x=>{
+    const scribe = findById(state.scribes,x.scribe);
+    return `<div class="card">
+      <div class="flex-row" style="justify-content:space-between;">
+        <div>
+          <span class="pill type">${esc(x.type)}</span>
+          ${scribe?`<span class="pill scribe">Scribe ${esc(scribe.label)}</span>`:""}
+          <strong>${esc(x.name_n||x.name_w||"(unnamed)")}</strong>
+          ${x.date_w?`<span class="muted"> · ${esc(x.date_w)}</span>`:""}
+        </div>
+        <div>
+          <button class="mini" onclick="editFam('${x.id}')">Edit</button>
+          <button class="mini danger" onclick="deleteFam('${x.id}')">×</button>
+        </div>
+      </div>
+      ${x.verbatim?`<div class="verbatim" style="margin-top:8px;">${esc(x.verbatim)}</div>`:""}
+      ${x.clean?`<div style="margin-top:6px;"><em>Reading:</em> ${esc(x.clean)}</div>`:""}
+      ${x.loc?`<div class="muted" style="margin-top:4px;">${esc(x.loc)}</div>`:""}
+      ${x.notes?`<div class="muted" style="margin-top:4px;font-style:italic;">${esc(x.notes)}</div>`:""}
+    </div>`;
+  }).join("");
+}
+
+// =========================================================================
+// JOURNAL
+// =========================================================================
+const JRN_FIELDS = ["page","scribe","date-w","date-i","verbatim","clean","interp","hist","photo"];
+function saveJrn(){
+  const id = el("jrn-id").value || uid();
+  const data = { id, created: el("jrn-id").value ? findById(state.journal_entries,id).created : new Date().toISOString() };
+  JRN_FIELDS.forEach(f=>{ const k = f.replace("-","_"); data[k] = el("jrn-"+f).value.trim(); });
+  const i = state.journal_entries.findIndex(x=>x.id===id);
+  if(i>=0) state.journal_entries[i] = data; else state.journal_entries.push(data);
+  saveState(); clearForm("jrn-form"); el("jrn-id").value=""; renderJrn(); renderRecent();
+}
+function editJrn(id){
+  const x = findById(state.journal_entries,id); if(!x) return;
+  el("jrn-id").value = x.id;
+  JRN_FIELDS.forEach(f=>{ const k = f.replace("-","_"); const n = el("jrn-"+f); if(n) n.value = x[k]||""; });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function deleteJrn(id){
+  if(!confirm("Delete this journal entry?")) return;
+  state.journal_entries = state.journal_entries.filter(x=>x.id!==id);
+  saveState(); renderJrn(); renderRecent();
+}
+function renderJrn(){
+  const host = el("jrn-list");
+  if(!state.journal_entries.length){ host.innerHTML='<div class="empty">No journal entries yet.</div>'; return; }
+  host.innerHTML = state.journal_entries.map(x=>{
+    const scribe = findById(state.scribes,x.scribe);
+    return `<div class="card">
+      <div class="flex-row" style="justify-content:space-between;">
+        <div>
+          ${scribe?`<span class="pill scribe">Scribe ${esc(scribe.label)}</span>`:""}
+          ${x.date_w?`<strong>${esc(x.date_w)}</strong>`:"<strong>(undated)</strong>"}
+        </div>
+        <div>
+          <button class="mini" onclick="editJrn('${x.id}')">Edit</button>
+          <button class="mini danger" onclick="deleteJrn('${x.id}')">×</button>
+        </div>
+      </div>
+      ${x.verbatim?`<div class="verbatim" style="margin-top:8px;">${esc(x.verbatim)}</div>`:""}
+      ${x.clean?`<div style="margin-top:6px;"><em>Reading:</em> ${esc(x.clean)}</div>`:""}
+      ${x.interp?`<div style="margin-top:6px;" class="muted">${esc(x.interp)}</div>`:""}
+      ${x.hist?`<div style="margin-top:6px;" class="muted"><em>Context:</em> ${esc(x.hist)}</div>`:""}
+    </div>`;
+  }).join("");
+}
+
+// =========================================================================
+// PEOPLE
+// =========================================================================
+const PPL_FIELDS = ["name","variants","birth","birth-loc","death","death-loc","father","mother","spouse","children","rel","notes"];
+function savePerson(){
+  const id = el("ppl-id").value || uid();
+  const data = { id };
+  PPL_FIELDS.forEach(f=>{ const k = f.replace("-","_"); data[k] = el("ppl-"+f).value.trim(); });
+  const i = state.people.findIndex(x=>x.id===id);
+  if(i>=0) state.people[i] = data; else state.people.push(data);
+  saveState(); clearForm("ppl-form"); el("ppl-id").value=""; renderPpl(); renderDropdowns();
+}
+function editPerson(id){
+  const x = findById(state.people,id); if(!x) return;
+  el("ppl-id").value = x.id;
+  PPL_FIELDS.forEach(f=>{ const k = f.replace("-","_"); const n = el("ppl-"+f); if(n) n.value = x[k]||""; });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function deletePerson(id){
+  if(!confirm("Delete this person?")) return;
+  state.people = state.people.filter(x=>x.id!==id);
+  saveState(); renderPpl(); renderDropdowns();
+}
+function renderPpl(){
+  const host = el("ppl-list");
+  if(!state.people.length){ host.innerHTML='<div class="empty">No people recorded yet.</div>'; return; }
+  host.innerHTML = state.people.map(p=>`
+    <div class="card">
+      <div class="flex-row" style="justify-content:space-between;">
+        <div>
+          <strong style="font-size:1.1em;">${esc(p.name||"(unnamed)")}</strong>
+          ${p.rel?`<span class="muted"> · ${esc(p.rel)}</span>`:""}
+        </div>
+        <div>
+          <button class="mini" onclick="editPerson('${p.id}')">Edit</button>
+          <button class="mini danger" onclick="deletePerson('${p.id}')">×</button>
+        </div>
+      </div>
+      <div class="muted" style="margin-top:4px;">${p.birth?"b. "+esc(p.birth):""}${p.birth_loc?" — "+esc(p.birth_loc):""}${p.death?" · d. "+esc(p.death):""}${p.death_loc?" — "+esc(p.death_loc):""}</div>
+      ${p.variants?`<div class="muted">Also: ${esc(p.variants)}</div>`:""}
+      ${p.spouse?`<div class="muted">Spouse: ${esc(p.spouse)}</div>`:""}
+      ${p.notes?`<div style="margin-top:6px;">${esc(p.notes)}</div>`:""}
+    </div>`).join("");
+}
+
+// =========================================================================
+// COMPARISON
+// =========================================================================
+const CMP_FIELDS = ["ref","page-old","page-new","text-old","text-new","diff","trans"];
+function saveCmp(){
+  const id = el("cmp-id").value || uid();
+  const data = { id };
+  CMP_FIELDS.forEach(f=>{ const k = f.replace("-","_"); data[k] = el("cmp-"+f).value.trim(); });
+  const i = state.comparisons.findIndex(x=>x.id===id);
+  if(i>=0) state.comparisons[i] = data; else state.comparisons.push(data);
+  saveState(); clearForm("cmp-form"); el("cmp-id").value=""; renderCmp();
+}
+function editCmp(id){
+  const x = findById(state.comparisons,id); if(!x) return;
+  el("cmp-id").value = x.id;
+  CMP_FIELDS.forEach(f=>{ const k = f.replace("-","_"); const n = el("cmp-"+f); if(n) n.value = x[k]||""; });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function deleteCmp(id){
+  if(!confirm("Delete this comparison?")) return;
+  state.comparisons = state.comparisons.filter(x=>x.id!==id);
+  saveState(); renderCmp();
+}
+function renderCmp(){
+  const host = el("cmp-list");
+  if(!state.comparisons.length){ host.innerHTML='<div class="empty">No comparisons recorded yet.</div>'; return; }
+  host.innerHTML = state.comparisons.map(c=>`
+    <div class="card">
+      <div class="flex-row" style="justify-content:space-between;">
+        <strong>${esc(c.ref||"(no reference)")}</strong>
+        <div>
+          <button class="mini" onclick="editCmp('${c.id}')">Edit</button>
+          <button class="mini danger" onclick="deleteCmp('${c.id}')">×</button>
+        </div>
+      </div>
+      <div class="dual" style="margin-top:10px;">
+        <div><div class="muted">1862 · p.${esc(c.page_old||"?")}</div><div class="verbatim">${esc(c.text_old||"")}</div></div>
+        <div><div class="muted">Modern · p.${esc(c.page_new||"?")}</div><div class="verbatim" style="border-left-color:var(--burgundy);">${esc(c.text_new||"")}</div></div>
+      </div>
+      ${c.diff?`<div style="margin-top:8px;"><em>Differences:</em> ${esc(c.diff)}</div>`:""}
+      ${c.trans?`<div class="muted" style="margin-top:4px;">${esc(c.trans)}</div>`:""}
+    </div>`).join("");
+}
+
+// =========================================================================
+// INSERTS
+// =========================================================================
+const INS_FIELDS = ["type","page","desc","photo-place","photo-iso","store","notes"];
+function saveIns(){
+  const id = el("ins-id").value || uid();
+  const data = { id };
+  INS_FIELDS.forEach(f=>{ const k = f.replace("-","_"); data[k] = el("ins-"+f).value.trim(); });
+  const i = state.inserts.findIndex(x=>x.id===id);
+  if(i>=0) state.inserts[i] = data; else state.inserts.push(data);
+  saveState(); clearForm("ins-form"); el("ins-id").value=""; renderIns();
+}
+function editIns(id){
+  const x = findById(state.inserts,id); if(!x) return;
+  el("ins-id").value = x.id;
+  INS_FIELDS.forEach(f=>{ const k = f.replace("-","_"); const n = el("ins-"+f); if(n) n.value = x[k]||""; });
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function deleteIns(id){
+  if(!confirm("Delete this insert?")) return;
+  state.inserts = state.inserts.filter(x=>x.id!==id);
+  saveState(); renderIns();
+}
+function renderIns(){
+  const host = el("ins-list");
+  if(!state.inserts.length){ host.innerHTML='<div class="empty">No inserts recorded yet.</div>'; return; }
+  host.innerHTML = state.inserts.map(x=>`
+    <div class="card">
+      <div class="flex-row" style="justify-content:space-between;">
+        <div><span class="pill type">${esc(x.type)}</span><strong>${esc(x.desc||"(no description)").slice(0,60)}</strong></div>
+        <div>
+          <button class="mini" onclick="editIns('${x.id}')">Edit</button>
+          <button class="mini danger" onclick="deleteIns('${x.id}')">×</button>
+        </div>
+      </div>
+      ${x.store?`<div class="muted" style="margin-top:4px;">Stored: ${esc(x.store)}</div>`:""}
+      ${x.notes?`<div style="margin-top:6px;">${esc(x.notes)}</div>`:""}
+    </div>`).join("");
+}
+
+// =========================================================================
+// CUSTODIANSHIP
+// =========================================================================
+const CUS_FIELDS = ["name","from","to","notes"];
+function saveCus(){
+  const id = el("cus-id").value || uid();
+  const data = { id };
+  CUS_FIELDS.forEach(f=>{ data[f] = el("cus-"+f).value.trim(); });
+  const i = state.custodianship.findIndex(x=>x.id===id);
+  if(i>=0) state.custodianship[i] = data; else state.custodianship.push(data);
+  saveState(); clearForm("cus-form"); el("cus-id").value=""; renderCus();
+}
+function editCus(id){
+  const x = findById(state.custodianship,id); if(!x) return;
+  el("cus-id").value = x.id;
+  CUS_FIELDS.forEach(f=>{ const n = el("cus-"+f); if(n) n.value = x[f]||""; });
+}
+function deleteCus(id){
+  if(!confirm("Delete this custodian record?")) return;
+  state.custodianship = state.custodianship.filter(x=>x.id!==id);
+  saveState(); renderCus();
+}
+function renderCus(){
+  const host = el("cus-list");
+  if(!state.custodianship.length){ host.innerHTML='<div class="empty">No custodians recorded yet.</div>'; return; }
+  const sorted = [...state.custodianship].sort((a,b)=>String(a.from||"").localeCompare(String(b.from||"")));
+  host.innerHTML = `<table><thead><tr><th>Custodian</th><th>From</th><th>To</th><th>Notes</th><th></th></tr></thead><tbody>${sorted.map(c=>`
+    <tr>
+      <td data-l="Custodian"><strong>${esc(c.name)}</strong></td>
+      <td data-l="From">${esc(c.from)}</td>
+      <td data-l="To">${esc(c.to||"present")}</td>
+      <td data-l="Notes" class="muted">${esc(c.notes||"")}</td>
+      <td><button class="mini" onclick="editCus('${c.id}')">Edit</button><button class="mini danger" onclick="deleteCus('${c.id}')">×</button></td>
+    </tr>`).join("")}</tbody></table>`;
+}
+
+// =========================================================================
+// SCRIBES
+// =========================================================================
+const SCR_FIELDS = ["label","who","first","last","desc"];
+function saveScr(){
+  const id = el("scr-id").value || uid();
+  const data = { id };
+  SCR_FIELDS.forEach(f=>{ data[f] = el("scr-"+f).value.trim(); });
+  const i = state.scribes.findIndex(x=>x.id===id);
+  if(i>=0) state.scribes[i] = data; else state.scribes.push(data);
+  saveState(); clearForm("scr-form"); el("scr-id").value=""; renderScr(); renderDropdowns();
+}
+function editScr(id){
+  const x = findById(state.scribes,id); if(!x) return;
+  el("scr-id").value = x.id;
+  SCR_FIELDS.forEach(f=>{ const n = el("scr-"+f); if(n) n.value = x[f]||""; });
+}
+function deleteScr(id){
+  if(!confirm("Delete this scribe?")) return;
+  state.scribes = state.scribes.filter(x=>x.id!==id);
+  saveState(); renderScr(); renderDropdowns();
+}
+function renderScr(){
+  const host = el("scr-list");
+  if(!state.scribes.length){ host.innerHTML='<div class="empty">No scribes identified yet. Add Scribe A when you encounter the first distinct hand.</div>'; return; }
+  host.innerHTML = state.scribes.map(s=>`
+    <div class="card">
+      <div class="flex-row" style="justify-content:space-between;">
+        <div><span class="pill scribe">Scribe ${esc(s.label)}</span> <strong>${esc(s.who||"(unknown identity)")}</strong></div>
+        <div>
+          <button class="mini" onclick="editScr('${s.id}')">Edit</button>
+          <button class="mini danger" onclick="deleteScr('${s.id}')">×</button>
+        </div>
+      </div>
+      <div class="muted" style="margin-top:4px;">${esc(s.first||"?")} → ${esc(s.last||"?")}</div>
+      ${s.desc?`<div style="margin-top:6px;">${esc(s.desc)}</div>`:""}
+    </div>`).join("");
+}
+
+// =========================================================================
+// SESSIONS
+// =========================================================================
+function startSession(){
+  state.activeSession = { id:uid(), start: new Date().toISOString(), end:null, pages:[], notes:"" };
+  saveState(); renderSession(); renderSessionBar();
+}
+function endSession(){
+  if(!state.activeSession) return;
+  state.activeSession.end = new Date().toISOString();
+  state.activeSession.notes = (el("ses-notes")?.value||"").trim();
+  state.activeSession.pages_covered = (el("ses-pages")?.value||"").trim();
+  state.sessions.push(state.activeSession);
+  state.activeSession = null;
+  saveState(); renderSession(); renderSessionBar(); renderSessions();
+}
+function renderSession(){
+  const host = el("session-state");
+  if(state.activeSession){
+    const start = new Date(state.activeSession.start);
+    host.innerHTML = `
+      <div class="session-active">
+        <div>
+          <div class="muted">Started ${start.toLocaleString()}</div>
+          <div class="timer" id="ses-timer">00:00:00</div>
+        </div>
+        <div style="flex:1;min-width:240px;">
+          <div class="field"><label>Pages Covered</label><input id="ses-pages" placeholder="247–262"></div>
+          <div class="field" style="margin-top:6px;"><label>Session Notes</label><textarea id="ses-notes"></textarea></div>
+        </div>
+        <button class="act" onclick="endSession()">End Session</button>
+      </div>`;
+    tickTimer();
+  } else {
+    host.innerHTML = `
+      <p class="muted">No active session.</p>
+      <button class="act" onclick="startSession()">Begin Session</button>`;
+  }
+}
+let timerInterval = null;
+function tickTimer(){
+  clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    if(!state.activeSession) { clearInterval(timerInterval); return; }
+    const t = el("ses-timer"); if(!t){ clearInterval(timerInterval); return; }
+    const diff = Date.now() - new Date(state.activeSession.start).getTime();
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    t.textContent = `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+  },1000);
+}
+function renderSessionBar(){
+  const host = el("session-bar");
+  if(state.activeSession){
+    const start = new Date(state.activeSession.start);
+    host.innerHTML = `<div class="banner ok">Session in progress since ${start.toLocaleTimeString()} — go to Sessions to end it.</div>`;
+  } else {
+    host.innerHTML = "";
+  }
+}
+function renderSessions(){
+  const host = el("ses-list");
+  if(!state.sessions.length){ host.innerHTML='<div class="empty">No sessions completed yet.</div>'; return; }
+  const sorted = [...state.sessions].sort((a,b)=>new Date(b.start)-new Date(a.start));
+  host.innerHTML = `<table><thead><tr><th>Date</th><th>Duration</th><th>Pages</th><th>Notes</th></tr></thead><tbody>${sorted.map(s=>{
+    const dur = s.end ? (new Date(s.end)-new Date(s.start)) : 0;
+    const mins = Math.round(dur/60000);
+    return `<tr>
+      <td data-l="Date">${new Date(s.start).toLocaleString()}</td>
+      <td data-l="Duration">${Math.floor(mins/60)}h ${mins%60}m</td>
+      <td data-l="Pages">${esc(s.pages_covered||"")}</td>
+      <td data-l="Notes" class="muted">${esc(s.notes||"")}</td>
+    </tr>`;
+  }).join("")}</tbody></table>`;
+}
+
+// =========================================================================
+// DROPDOWNS — keep linked selects in sync
+// =========================================================================
+function renderDropdowns(){
+  // page-bible
+  const bibleSel = el("page-bible");
+  if(bibleSel){
+    bibleSel.innerHTML = state.bibles.map(b=>`<option value="${b.id}">${esc(b.title||b.role||b.id)}</option>`).join("");
+  }
+  // page selects for fam, jrn, ins
+  const pageOpts = state.pages.map(p=>`<option value="${p.id}">p.${esc(p.num)} ${esc(p.side)} — ${esc(p.scrip||"")}</option>`).join("");
+  ["fam-page","jrn-page","ins-page"].forEach(id=>{
+    const n = el(id); if(n) n.innerHTML = `<option value="">— none —</option>` + pageOpts;
+  });
+  // scribe selects
+  const scrOpts = state.scribes.map(s=>`<option value="${s.id}">Scribe ${esc(s.label)} (${esc(s.who||"?")})</option>`).join("");
+  ["fam-scribe","jrn-scribe"].forEach(id=>{
+    const n = el(id); if(n) n.innerHTML = `<option value="">— none —</option>` + scrOpts;
+  });
+  // person select
+  const pplOpts = state.people.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join("");
+  const fp = el("fam-person"); if(fp) fp.innerHTML = `<option value="">— unlinked —</option>` + pplOpts;
+}
+
+// =========================================================================
+// DASHBOARD
+// =========================================================================
+function renderStats(){
+  el("stats").innerHTML = `
+    <div class="stat"><div class="l">Pages Logged</div><div class="v">${state.pages.length}</div></div>
+    <div class="stat"><div class="l">Family Entries</div><div class="v">${state.family_entries.length}</div></div>
+    <div class="stat"><div class="l">Journal Entries</div><div class="v">${state.journal_entries.length}</div></div>
+    <div class="stat"><div class="l">People</div><div class="v">${state.people.length}</div></div>
+    <div class="stat"><div class="l">Inserts</div><div class="v">${state.inserts.length}</div></div>
+    <div class="stat"><div class="l">Scribes</div><div class="v">${state.scribes.length}</div></div>
+    <div class="stat"><div class="l">Sessions</div><div class="v">${state.sessions.length}</div></div>
+    <div class="stat"><div class="l">Comparisons</div><div class="v">${state.comparisons.length}</div></div>`;
+}
+const CHECKLIST_ITEMS = [
+  ["cond_survey","Walking condition survey done (spine, hinges, hinges, foxing, red-rot, loose pages noted)"],
+  ["biblio_capture","Title page + colophon + endpapers photographed and transcribed"],
+  ["photo_rig","Fixed-position camera setup with consistent indirect lighting and color/scale card"],
+  ["naming_convention","Photo filename convention chosen and documented (e.g., JordanBible1862_p###_recto.jpg)"],
+  ["gloves_cradle","Cotton gloves and book cradle ready; clean hands protocol agreed"],
+  ["backup_plan","Backup destination chosen — JSON export will be saved to: ____________"],
+  ["destination_decision","Final output decided (printed family book / private PDF / website / archival scan)"],
+  ["modern_bible_chosen","Modern comparison Bible chosen and its bibliographic data captured"]
+];
+function renderChecklist(){
+  const host = el("checklist");
+  host.innerHTML = CHECKLIST_ITEMS.map(([k,label])=>`
+    <label class="${state.checklist[k]?'done':''}">
+      <input type="checkbox" ${state.checklist[k]?"checked":""} onchange="toggleCheck('${k}',this.checked)">
+      ${esc(label)}
+    </label>`).join("");
+}
+function toggleCheck(k,v){
+  state.checklist[k] = v;
+  saveState(); renderChecklist();
+}
+function renderRecent(){
+  const all = [
+    ...state.family_entries.map(x=>({t:"family",when:x.created,label:x.name_n||x.name_w||"(unnamed)",id:x.id})),
+    ...state.journal_entries.map(x=>({t:"journal",when:x.created,label:x.date_w||"(undated)",id:x.id}))
+  ].filter(x=>x.when).sort((a,b)=>new Date(b.when)-new Date(a.when)).slice(0,8);
+  const host = el("recent");
+  if(!all.length){ host.innerHTML='<div class="muted" style="font-style:italic;">Nothing recorded yet.</div>'; return; }
+  host.innerHTML = all.map(r=>`<div style="padding:6px 0;border-bottom:1px dotted var(--parchment-shadow);"><span class="pill type">${r.t}</span> ${esc(r.label)} <span class="muted">· ${new Date(r.when).toLocaleString()}</span></div>`).join("");
+}
+
+// =========================================================================
+// STORAGE STATUS / DATA
+// =========================================================================
+function renderStorageStatus(){
+  const host = el("storage-status");
+  const det = el("storage-detail");
+  if(storageMode === "memory"){
+    host.innerHTML = `<div class="banner err">⚠ localStorage unavailable — running in memory only. Export your data before closing this tab.</div>`;
+  } else {
+    const last = state.meta.lastModified ? new Date(state.meta.lastModified).toLocaleString() : "never";
+    host.innerHTML = `<div class="banner ok">✓ Saved to local storage · last write: ${last}</div>`;
+  }
+  if(det){
+    try{
+      const size = new Blob([JSON.stringify(state)]).size;
+      det.innerHTML = `Storage mode: <strong>${storageMode}</strong><br>Last saved: ${state.meta.lastModified||"never"}<br>Current size: ${(size/1024).toFixed(1)} KB`;
+    }catch(e){ det.innerHTML = `Storage mode: ${storageMode}`; }
+  }
+}
+
+// =========================================================================
+// EXPORT / IMPORT
+// =========================================================================
+function downloadBlob(content, filename, type){
+  const blob = new Blob([content],{type});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },100);
+}
+function exportJSON(){
+  const stamp = new Date().toISOString().slice(0,10);
+  downloadBlob(JSON.stringify(state,null,2), `JordanBible1862_${stamp}.json`, "application/json");
+}
+function toCSV(rows){
+  if(!rows.length) return "";
+  const keys = Object.keys(rows[0]);
+  const escapeCell = v => {
+    if(v==null) return "";
+    const s = String(v).replace(/"/g,'""');
+    return /[",\n]/.test(s) ? `"${s}"` : s;
+  };
+  return [keys.join(","), ...rows.map(r=>keys.map(k=>escapeCell(r[k])).join(","))].join("\n");
+}
+function exportAllCSV(){
+  const stamp = new Date().toISOString().slice(0,10);
+  const tables = {
+    bibles: state.bibles, pages: state.pages, family_entries: state.family_entries,
+    journal_entries: state.journal_entries, people: state.people, inserts: state.inserts,
+    custodianship: state.custodianship, comparisons: state.comparisons,
+    sessions: state.sessions, scribes: state.scribes
+  };
+  let bundle = "";
+  Object.entries(tables).forEach(([name,rows])=>{
+    bundle += `# ${name.toUpperCase()}\n` + toCSV(rows) + "\n\n";
+  });
+  downloadBlob(bundle, `JordanBible1862_tables_${stamp}.csv`, "text/csv");
+}
+function importJSON(){
+  const f = el("import-file").files[0];
+  if(!f){ alert("Choose a JSON file first."); return; }
+  const reader = new FileReader();
+  reader.onload = e=>{
+    try{
+      const parsed = JSON.parse(e.target.result);
+      if(!parsed.meta || !parsed.bibles){ alert("This doesn't look like a project export."); return; }
+      if(!confirm("Replace all current data with this import?")) return;
+      state = parsed;
+      if(!state.checklist) state.checklist = freshState().checklist;
+      if(!state.scribes) state.scribes = [];
+      saveState(); renderAll();
+      alert("Import complete.");
+    }catch(err){ alert("Import failed: " + err.message); }
+  };
+  reader.readAsText(f);
+}
+function wipeAll(){
+  if(!confirm("Erase ALL project data? This cannot be undone.")) return;
+  if(!confirm("Are you certain? Type a slow breath, then click OK.")) return;
+  state = freshState();
+  try{ localStorage.removeItem(KEY); }catch(e){}
+  saveState(); renderAll();
+}
+
+// =========================================================================
+// MASTER RENDER
+// =========================================================================
+function renderAll(){
+  renderStorageStatus();
+  renderStats();
+  renderChecklist();
+  renderRecent();
+  renderBibles();
+  renderPages();
+  renderFam();
+  renderJrn();
+  renderPpl();
+  renderCmp();
+  renderIns();
+  renderCus();
+  renderScr();
+  renderSession();
+  renderSessionBar();
+  renderSessions();
+  renderDropdowns();
+}
+
+renderAll();
+</script>
+
+</body>
+</html>
